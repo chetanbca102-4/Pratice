@@ -1,8 +1,6 @@
-// Student.java
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Student {
@@ -34,12 +32,13 @@ public class Student {
     }
 
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter name: ");
-        String name = sc.nextLine();
+        if (args.length < 2) {
+            System.out.println("Usage: java Student <name> <DOB in DD-MM-YYYY or YYYY-MM-DD>");
+            return;
+        }
 
-        System.out.print("Enter Date of Birth (DD-MM-YYYY or YYYY-MM-DD): ");
-        String dob = sc.nextLine();
+        String name = args[0];
+        String dob = args[1];
 
         Student s = new Student(name, dob);
         s.displayStudentInfo();
